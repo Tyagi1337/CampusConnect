@@ -9,27 +9,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{% static "plugins/fontawesome-free/css/all.min.css"%}">
+  <link rel="stylesheet" href="{% static "plugins/fontawesome-free/css/all.min.css" %}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="{% static "plugins/icheck-bootstrap/icheck-bootstrap.min.css"%}">
+  <link rel="stylesheet" href="{% static "plugins/icheck-bootstrap/icheck-bootstrap.min.css" %}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{% static "dist/css/adminlte.min.css"%}">
+  <link rel="stylesheet" href="{% static "dist/css/adminlte.min.css" %}">
   <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Axiforma" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!-- Custom styles -->
   <style>
-    .login-logo a {
-      color: #1ba87e;
-        font-size:50px ;
-    }
-  </style>
-
-  <style>
     body {
-      background-color: #121212;
-      font-family: 'Axiforma', sans-serif;
+      background-color: #f1f1f1;
+      color: #333;
+      font-family: 'Source Sans Pro', sans-serif;
     }
   </style>
 </head>
@@ -43,8 +37,8 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to Student Management System</p>
 
-      <form action="/dologin" method="post">
-          {% csrf_token %}
+      <form action="/doLogin" method="post" id="demo-form">
+      {% csrf_token %}
         <div class="input-group mb-3">
           <input type="email" class="form-control" placeholder="Email" name="email">
           <div class="input-group-append">
@@ -61,23 +55,45 @@
             </div>
           </div>
         </div>
+        <div class="input-group mb-3">
+                <div class="g-recaptcha" data-sitekey="6LeWtqUZAAAAAMO6YmxX5_XWel9hLWrb_iEiff26"></div>
+        </div>
         <div class="row">
           <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block" >Sign In</button>
+          </div><!-- /.col -->
+           <div class="col-12 text-center">
+             <a href="{% url 'password_reset' %}">Reset Password</a>
+          </div><!-- /.col -->
+            <div class="col-12 text-center">
+             <a href="{% url 'signup_admin' %}">Admin Signup </a>
+          </div><!-- /.col -->
+                        <div class="col-12 text-center">
+             <a href="{% url 'signup_staff' %}">Staff Signup </a>
+          </div><!-- /.col -->
+                                    <div class="col-12 text-center">
+             <a href="{% url 'signup_student' %}">Student Signup </a>
+          </div><!-- /.col -->
+        </div>
+        <div class="row">
+          {% if messages %}
+         <div class="col-12">
+            {% for message in messages %}
+            {% if message.tags == 'error' %}
+            <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+            {% endif %}
+            {% if message.tags == 'success' %}
+            <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+            {% endif %}
+            {% endfor %}
           </div>
-          <!-- /.col -->
+          {% endif %}
         </div>
       </form>
 
       <!-- /.social-auth-links -->
 
-      <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
-      </p>
-      <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new membership</a>
-      </p>
     </div>
     <!-- /.login-card-body -->
   </div>
@@ -85,11 +101,12 @@
 <!-- /.login-box -->
 
 <!-- jQuery -->
-<script src="{% static "plugins/jquery/jquery.min.js"%}"></script>
+<script src="{% static "plugins/jquery/jquery.min.js" %}"></script>
 <!-- Bootstrap 4 -->
-<script src="{% static "plugins/bootstrap/js/bootstrap.bundle.min.js"%}"></script>
+<script src="{% static "plugins/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
 <!-- AdminLTE App -->
-<script src="{% static "dist/js/adminlte.min.js"%}"></script>
+<script src="{% static "dist/js/adminlte.min.js" %}"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 </body>
 </html>

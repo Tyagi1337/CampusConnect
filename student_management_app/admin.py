@@ -9,5 +9,4 @@ from student_management_app.models import CustomUser
 class UserModel(UserAdmin):
     pass
 
-
-admin.site.register(CustomUser, UserModel)
+admin.site.register(CustomUser,UserModel)
