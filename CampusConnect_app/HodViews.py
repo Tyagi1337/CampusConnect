@@ -530,7 +530,7 @@ def send_student_notification(request):
     url="https://fcm.googleapis.com/fcm/send"
     body={
         "notification":{
-            "title":"Student Management System",
+            "title":"CampusConnect",
             "body":message,
             "click_action": "https://studentmanagementsystem22.herokuapp.com/student_all_notification",
             "icon": "http://studentmanagementsystem22.herokuapp.com/static/dist/img/user2-160x160.jpg"
@@ -553,7 +553,7 @@ def send_staff_notification(request):
     url="https://fcm.googleapis.com/fcm/send"
     body={
         "notification":{
-            "title":"Student Management System",
+            "title":"CampusConnect",
             "body":message,
             "click_action":"https://studentmanagementsystem22.herokuapp.com/staff_all_notification",
             "icon":"http://studentmanagementsystem22.herokuapp.com/static/dist/img/user2-160x160.jpg"
