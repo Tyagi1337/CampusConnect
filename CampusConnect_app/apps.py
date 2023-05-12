@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class StudentManagementAppConfig(AppConfig):
+class CampusConnect(AppConfig):
     name = 'CampusConnect_app'
